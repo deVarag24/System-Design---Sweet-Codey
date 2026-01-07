@@ -17,3 +17,11 @@
     - a fast, connectionless internet protocol for time-sensitive applications like streaming, gaming, and DNS
 8. **HyperText Transfer Protocol (HTTP)**
     - the fundamental system for transferring data between your client and a web server, using a request-response model to build the *World Wide Web*.
+9. **WEBSOCKETS**
+    - BiDirectional communication protocol
+    - client or server can send data anytime
+
+10. **Forward Proxy**
+    - client ask data to FP and FP ask data to server
+11. **Reverse Proxy**
+    - RP filter clients request and forward to appropriate service
