@@ -63,3 +63,62 @@ Amount of cache required everyday 1% of daily storage **2TB/Day**
 
 
 ## API Design
+
+### Create Post
+
+- **Endpoint -** POST `/v1/post`
+- **Body -**
+```
+{
+    userId          String
+    mediaType       ("text", "image", "video")
+    text?           String
+    mediaUrl?       String[]
+    description?    String
+    hashTag?        String[]
+}
+```
+### Create Comment
+
+- **Endpoint -** POST `/v1/comment`
+- **Body -**
+```
+{
+    userId          String
+    postId          String
+    Comment         String
+}
+```
+### Create Like
+
+- **Endpoint -** POST `/v1/like`
+- **Body -**
+```
+{
+    userId          String
+    postId          String
+}
+```
+### Follow
+
+- **Endpoint -** POST `/v1/follow`
+- **Body -**
+```
+{
+    followBy          String
+    followTo          String
+}
+```
+### Un-Follow
+
+- **Endpoint -** PATCH `/v1/un-follow`
+- **Body -**
+```
+{
+    followBy          String
+    followTo          String
+}
+```
+### News Feed
+
+- **Endpoint -** GET `/v1/feed/:userId`
