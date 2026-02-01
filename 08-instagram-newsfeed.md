@@ -122,3 +122,82 @@ Amount of cache required everyday 1% of daily storage **2TB/Day**
 ### News Feed
 
 - **Endpoint -** GET `/v1/feed/:userId`
+
+
+## HLD
+
+![alt text](image.png)
+
+
+## DB Selection
+
+### SQL v/s NoSql
+| factor | SQL | NoSql |
+|--------|-----|-------|
+| Fast Data Access | X  | O |
+| Scale is too large | X | O |
+| Data Change frequently | X | O |
+| Fixed Structure | O | X |
+| Complex Quiry | O | X |
+
+- **Follow DB :-** NoSql `(Graph DB)`
+- **Post DB :-** NoSql
+- **Feed DB :-** NoSql `(Depended on Post DB)`
+- **Comment DB :-** NoSql
+- **Like DB :-** NoSql
+
+## DB Modeling
+
+### Post DB
+```
+{
+    id              String, PK
+    userId          String, FK
+    mediaType       ENUM("text", "image", "video")
+    text            String, null
+    mediaUrl        Array[String], null
+    description     String
+}
+```
+
+### Feed DB
+```
+{
+    id              String, PK
+    userId          String, FK
+    feedItems       Araay[PostId]
+}
+```
+
+### Comment DB
+```
+{
+    id              String, PK
+    userId          String, FK
+    postId          String, FK
+    comment         String
+}
+```
+### Like DB
+```
+{
+    id              String, PK
+    userId          String, FK
+    postId          String, FK
+}
+```
+### Follow DB
+```
+{
+    id              String, PK
+    followBy          String, FK
+    followTo          String, FK
+}
+```
+
+## Deep Dive
+
+### Presigned Url
+Url with temporay access
+
+
