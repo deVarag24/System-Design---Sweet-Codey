@@ -126,7 +126,7 @@ Amount of cache required everyday 1% of daily storage **2TB/Day**
 
 ## HLD
 
-![alt text](image.png)
+![alt text](public/image.png)
 
 
 ## DB Selection
