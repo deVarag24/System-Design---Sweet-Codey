@@ -38,3 +38,95 @@
         - `7 TB/sec`
 
 ## API Design
+
+### Upload Content API
+1. User request to upload a video
+2. server send the URI **(Universal Resource Indentifier)** session
+3. With help of URI session, user start uploading in chunks
+
+#### For Request of URI
+- **Endpoint -** POST /v1/videos?uploadType=resume
+- **Body**
+```
+{
+    title   string
+    format  string
+    size    string
+}
+```
+
+#### Start Uploading
+- **Endpoint -** PUT /v1/videos?uploadType=`resume`&uploadId=`uriId`
+- **Body**
+```
+{
+    binaryData   string
+}
+```
+### Stream Content API
+1. Video Store in chuncks in server
+2. First, we get the menifest file, which provides the location of chunks
+3. then we use menifest file to fetch data from server or cdn
+3. video streaming is used by **HLS Protocol** (HTTP Live Streaming)
+
+#### To Get Menifest file
+- **Endpoint -** GET /v1/watch?video=`Video_id`
+- **Response**
+```
+[
+    {
+        chunck: chunck_1,
+        location: location_1
+    },
+    {
+        chunck: chunck_2,
+        location: location_2
+    }
+]
+```
+
+#### After Mefinest Data, start streaming
+- **Endpoint -** GET /v1/location?location=`location_1`
+- **Response**
+```
+[
+    {
+        chunck: chunck_1,
+        duration: 0-5s
+    },
+    {
+        chunck: chunck_2,
+        duration: 5-10s
+    }
+]
+```
+## HLD
+![Video uplaod and streaming](public/image_1.png)
+
+## DB Selection
+1. **Video metadata DB**
+    - NoSQL
+
+## DB Modeling
+### Video MetaData DB
+```
+{
+    id              String, PK
+    format          ENUM
+    Dutation        Time
+    CreatorId       String, FK
+    title           String
+    Description     Text
+    CDN URLs: {
+        <video format>: {
+            <video quality>: [...chunks]
+        }
+    }
+}
+```
+
+## Deep Dive
+**HLS** stands for HTTPS Live Streaming
+- This is a streaming protocol
+- This Protocol is very adaptive (chnage streaming quality as per the network)
+- HLS encoded to working video needs to be in specific standards like **H.264, H.265**
