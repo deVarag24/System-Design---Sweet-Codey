@@ -24,6 +24,7 @@ This repository collects concise summaries, design goals, trade-offs, and worked
 10. [TinyURL](10-tiny-url.md)
 11. [Rate Limiter](11-rate-limiter.md)
 12. [WhatsApp](12-whatsapp.md)
+13. [Search System](13-search-system.md)
 
 ## How to use these notes
 
