@@ -27,6 +27,7 @@ This repository collects concise summaries, design goals, trade-offs, and worked
 13. [Search System](13-search-system.md)
 14. [Airbnb](14-airbnb.md)
 15. [Notification System](15-notification-system.md)
+16. [Distributed Logging System](16-distributed-logging.md)
 
 ## How to use these notes
 
