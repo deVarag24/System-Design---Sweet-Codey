@@ -28,6 +28,7 @@ This repository collects concise summaries, design goals, trade-offs, and worked
 14. [Airbnb](14-airbnb.md)
 15. [Notification System](15-notification-system.md)
 16. [Distributed Logging System](16-distributed-logging.md)
+17. [OTP Service](17-otp-service.md)
 
 ## How to use these notes
 
